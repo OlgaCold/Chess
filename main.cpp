@@ -34,7 +34,6 @@ int main(){
             case 3:
                 flag = true;
                 continue;
-                //end
                 break;
 
             case 4:
