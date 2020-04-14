@@ -1,5 +1,6 @@
  #include "game.h"
 
+
 Game::Game(int p_step){
 
     desk.resize(8);
