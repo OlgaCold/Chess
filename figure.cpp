@@ -128,3 +128,14 @@ int Queen::check_move(Moving &p_var, vector<vector<Figure *>> &p_desk){
     return 0;
 }
 
+int King::check_move(Moving &p_var, vector<vector<Figure *>> &p_desk){
+    if(abs(p_var.x_to - p_var.x_from) == 1 && abs(p_var.y_to - p_var.y_from) == 0 ||
+        abs(p_var.x_to - p_var.x_from) == 0 && abs(p_var.y_to - p_var.y_from) == 1 ||
+        abs(p_var.x_to - p_var.x_from) == 1 &&
+        abs(p_var.x_to - p_var.x_from) == abs(p_var.y_to - p_var.y_from)){
+            return 0;
+    }else{
+        return 2;
+    }
+}
+
