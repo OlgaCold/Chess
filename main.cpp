@@ -54,6 +54,14 @@ int main(){
                                 game.error_kill_yours();
                             }
                             break;
+                        case 3:
+							char figure = game.input_changing_pawn();
+							while (!game.changing_pawn(game.var, game.desk, figure)) {
+								figure = game.input_changing_pawn();
+							}
+							
+							num_step++;
+                            break;
                     }          
                 }else{
                     game.error_color();
@@ -70,67 +78,6 @@ int main(){
         game.draw_desk(num_step);
     } 
 
-    printf("Press any key...\n");
-    scanf("%*c");
+	system("pause");
     return 0;
 }
-
-/*1 king
-1 queen
-2 rooks
-2 bishops
-2 knights
-8 pawns*/
-
-
-
-
-
-
-
-
-
-
-
-
-// int inp_tmp = game.input(game.var, game.desk);
-//         switch (inp_tmp)
-//         {
-//             case 0:
-//                 if(game.check_color(game.var, game.desk, num_step)){
-//                 int check_tmp = game.desk[game.var.x_from][game.var.y_from]->check_move(game.var, game.desk);
-//                 switch (check_tmp)
-//                 {
-//                     case 1:
-//                         game.error_busy_way();
-//                         game.print_turn(num_step - 1);
-//                         break;
-//                     case 2:
-//                         game.error_behavior();
-//                         game.print_turn(num_step - 1);
-//                         break;
-//                     case 0:
-//                         if(game.move(game.var, game.desk)){
-//                             game.print_turn(num_step);  
-//                             num_step++;
-//                         }else{
-//                             game.error_kill_yours();
-//                             game.print_turn(num_step - 1);
-//                         }
-//                         break;
-//                 }          
-//                 }else{
-//                     game.error_color();
-//                     game.print_turn(num_step - 1);
-//                 }
-//                 break;
-//             case 1:
-//                 game.error_input();
-//                 game.print_turn(num_step - 1);
-//                 break;
-//             case 2:
-//                 game.error_void_input();
-//                 game.print_turn(num_step - 1);
-//                 break;
-//         }
-//         game.draw_desk();

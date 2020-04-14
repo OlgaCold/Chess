@@ -2,5 +2,10 @@
 *.vcxproj
 *.o
 *.vs
+*.vscode
 *Debug
 *.gitignore
+*.vscode
+*.json
+*.vcxproj.filters
+*.sln

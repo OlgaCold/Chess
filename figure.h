@@ -38,7 +38,7 @@ class Pawn : public Figure {
         
         Pawn(Color p_color):Figure(p_color){name.first = "Pawn"; name.second = 'P';};
         Pawn(Color p_color, pair<string, char> p_name, bool p_move):Figure(p_color, p_name, p_move){};
-        int check_move(Moving &p_var, vector<vector<Figure *>> &p_desk){return 0;};
+        int check_move(Moving &p_var, vector<vector<Figure *>> &p_desk);
 };
 
 class Rook : public Figure{

@@ -3,8 +3,6 @@
 #include <regex>
 #include <cstdio>
 #include <cstring>
-//#include <iostream>
-//#include <fstream>
 
 using namespace std;
 
@@ -15,8 +13,6 @@ class Game{
         Moving var;     
         
         Game(int p_step);
-        //Game(int p_step, file)
-        //~Game();
 
         void draw_desk(int p_step);
         void draw_line();
@@ -25,6 +21,8 @@ class Game{
         int input(Moving &p_var, vector<vector<Figure *>> &p_desk);
         bool move(Moving &p_var, vector<vector<Figure *>> &p_desk);
         bool check_color(Moving &p_var, vector<vector<Figure *>> &p_desk, int p_step);
+        char input_changing_pawn();
+		bool changing_pawn(Moving &p_var, vector<vector<Figure *>> &p_desk, char p_type);
         void error_input();
         void error_void_input();
         void error_color();
@@ -33,6 +31,7 @@ class Game{
         void error_behavior();
         void error_saving();
 		void error_loading();
+		void error_changing_pawn();
         void restart(vector<vector<Figure *>> &p_desk);
         bool save(vector<vector<Figure *>> &p_desk, int p_step);
         bool load(vector<vector<Figure *>> &p_desk, int &p_step);

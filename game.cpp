@@ -249,6 +249,102 @@ int Game::input(Moving &p_var, vector<vector<Figure *>> &p_desk){
     }   
 }
 
+char Game::input_changing_pawn(){
+    string str;
+    char symbol;
+    //pair<string, char> temp_name;
+    //bool temp_if_move = p_desk[p_var.x_from][p_var.y_from]->if_made_move;
+    //Color temp_color = p_desk[p_var.x_from][p_var.y_from]->color;
+
+    printf("What do you want to turn the pawn into?\n"
+    "(print \"R\" - Rook, \"k\" - Knight, \"B\" - Bishop, \"Q\" - Queen,)\n");
+    scanf(" %s", str.c_str());
+    int tmp = sscanf(str.c_str(), "%c", &symbol);
+
+
+    switch(symbol)
+    {
+        case 'R':
+			return 'R';
+            break;
+        case 'k':  
+			return 'k';              
+            break;
+        case 'B':
+			return 'B';
+            break;
+        case 'Q':
+			return 'Q';
+            break;
+        default:
+			return '\0';
+    }
+
+}
+
+bool Game::changing_pawn(Moving &p_var, vector<vector<Figure *>> &p_desk, char p_figure) {
+	pair<string, char> temp_name;
+	bool temp_if_move;
+	Color temp_color; 
+
+	temp_if_move = p_desk[p_var.x_from][p_var.y_from]->if_made_move;
+	temp_color = p_desk[p_var.x_from][p_var.y_from]->color;
+
+
+	switch (p_figure)
+	{
+	case 'R':
+		delete p_desk[p_var.x_from][p_var.y_from];
+		p_desk[p_var.x_from][p_var.y_from] = NULL;
+		delete p_desk[p_var.x_to][p_var.y_to];
+
+		temp_name.first = "Rook";
+		temp_name.second = 'R';
+		p_desk[p_var.x_to][p_var.y_to] = new Rook(temp_color, temp_name, temp_if_move);
+		system("CLS");
+		return true;
+		break;
+	case 'k':
+		delete p_desk[p_var.x_from][p_var.y_from];
+		p_desk[p_var.x_from][p_var.y_from] = NULL;
+		delete p_desk[p_var.x_to][p_var.y_to];
+
+		temp_name.first = "Knight";
+		temp_name.second = 'k';
+		p_desk[p_var.x_to][p_var.y_to] = new Knight(temp_color, temp_name, temp_if_move);  
+		system("CLS");
+		return true;
+		break;
+	case 'B':
+		delete p_desk[p_var.x_from][p_var.y_from];
+		p_desk[p_var.x_from][p_var.y_from] = NULL;
+		delete p_desk[p_var.x_to][p_var.y_to];
+
+		temp_name.first = "Bishop";
+		temp_name.second = 'B';
+		p_desk[p_var.x_to][p_var.y_to] = new Bishop(temp_color, temp_name, temp_if_move);
+		system("CLS");
+		return true;
+		break;
+	case 'Q':
+		delete p_desk[p_var.x_from][p_var.y_from];
+		p_desk[p_var.x_from][p_var.y_from] = NULL;
+		delete p_desk[p_var.x_to][p_var.y_to];
+
+		temp_name.first = "Queen";
+		temp_name.second = 'Q';
+		p_desk[p_var.x_to][p_var.y_to] = new Queen(temp_color, temp_name, temp_if_move);
+		system("CLS");
+		return true;
+		break;
+	default:
+		error_changing_pawn();
+		return false;
+		break;
+	}
+}
+
+
 void Game::draw_desk(int p_step){
 
     Game::print_turn(p_step);
@@ -299,7 +395,7 @@ bool Game::move(Moving &p_var, vector<vector<Figure *>> &p_desk){
 
 void Game::print_turn(int p_step){
 
-    if(p_step % 2 == 1){//
+    if(p_step % 2 == 1){
         printf("                  White's turn\n");
     }else{
         printf("                  Black's turn\n");
@@ -344,5 +440,10 @@ void Game::error_saving(){
 void Game::error_loading() {
 	system("CLS");
 	printf("Prolem with loading!\n");
+}
+
+void Game::error_changing_pawn() {
+	//system("CLS");
+	printf("Error! Enter figure first letter!\n");
 }
 
