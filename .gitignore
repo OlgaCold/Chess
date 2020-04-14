@@ -4,7 +4,6 @@
 *.vs
 *.vscode
 *Debug
-*.gitignore
 *.vscode
 *.json
 *.vcxproj.filters
